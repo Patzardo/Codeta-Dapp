@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "codeta_backend": {
+      "main": "src/codeta_backend/main.mo",
+      "type": "motoko"
+    },
+    "codeta_frontend": {
+      "dependencies": [
+        "codeta_backend"
+      ],
+      "source": [
+        "src/codeta_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "codeta_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
