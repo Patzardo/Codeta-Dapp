@@ -1,0 +1,55 @@
+type UserProfile = 
+ record {
+   contacts: vec text;
+   id: text;
+   "principal": principal;
+   properties: vec text;
+ };
+type PropertyHistory = 
+ record {
+   details: text;
+   event: text;
+   propertyId: text;
+   timestamp: int;
+ };
+type Property = 
+ record {
+   area: text;
+   createdAt: int;
+   description: text;
+   forSale: bool;
+   id: text;
+   image: text;
+   location: text;
+   name: text;
+   ownerId: text;
+   price: nat;
+ };
+type Contact = 
+ record {
+   description: text;
+   email: text;
+   id: text;
+   name: text;
+   status: text;
+   title: text;
+ };
+service : {
+  addProperty: (text, text, text, text, text, nat, text, text) -> (text);
+  buyProperty: (text, text) -> (text);
+  closeContactRequest: (text) -> (bool);
+  createContact: (text, text, text, text, text, text) -> (bool);
+  deleteContact: (text) -> (bool);
+  getActiveContacts: () -> (vec Contact) query;
+  getAllContacts: () -> (vec Contact) query;
+  getClosedContacts: () -> (vec Contact) query;
+  getContact: (text) -> (opt Contact) query;
+  getContactCount: () -> (nat) query;
+  getPropertiesForSale: () -> (vec Property) query;
+  getPropertyById: (text) -> (opt Property) query;
+  getPropertyHistory: (text) -> (vec PropertyHistory) query;
+  getUserProfileById: (text) -> (opt UserProfile) query;
+  loginUser: (text) -> (UserProfile);
+  updateContact: (text, text, text, text, text) -> (bool);
+  updateUserProfile: (text, vec text) -> (bool);
+}
